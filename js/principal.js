@@ -1,16 +1,30 @@
 var titulo = document.querySelector(".titulo");
-titulo.textContent = "Nutricionista";
+var botao = document.querySelector("#adicionar-paciente");
 
-var paciente = document.querySelector("#primeiro-paciente");
-var tdPeso = paciente.querySelector(".info-peso");
-var tdAltura = paciente.querySelector(".info-altura");
+botao.addEventListener("click", function(){
+    console.log("Eu fui clicado");
+});
 
-var peso = tdPeso.textContent;
-var altura = tdAltura.textContent;
+var pacientes = document.querySelectorAll(".paciente");
 
-var imc = peso / (altura * altura);
+for (var i = 0; pacientes.length; i++) {
+    var paciente = pacientes[i];
 
-var tdImc = paciente.querySelector(".info-imc");
-tdImc.textContent = imc;
+    var tdPeso = paciente.querySelector(".info-peso");
+    var tdAltura = paciente.querySelector(".info-altura");
 
-console.log(imc)
+    var peso = tdPeso.textContent;
+    var altura = tdAltura.textContent;
+
+    var imc = peso / (altura * altura);
+    
+    var tdImc = paciente.querySelector(".info-imc");
+    tdImc.textContent = imc.toFixed(2);
+    
+    if(imc > 25){
+        paciente.classList.add("paciente-invalido");
+    }
+}
+
+
+
