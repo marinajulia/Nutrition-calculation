@@ -1,17 +1,15 @@
-botao.addEventListener("click", function () {
+botao.addEventListener("click", function (event) {
     event.preventDefault();
 
     var form = document.querySelector("#form-adicionar");
     var paciente = obtemPacienteDoFormulario(form);
-    var pacienteTr = montaTr(paciente);
 
     if(!validaPaciente(paciente)){
         var mensagemErro = document.querySelector("#mensagem-erro");
         mensagemErro.textContent = "IMC inválido"
         return;
     }
-    var tabela = document.querySelector("#tabela-pacientes");
-    tabela.appendChild(pacienteTr);
+    adicionaPacienteNaTabela(paciente);
     form.reset();
 });
 
@@ -50,6 +48,13 @@ function validaPaciente(paciente){
         return true
     }
     return false;
+}
+
+function adicionaPacienteNaTabela(paciente){
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+
 }
 
 // exemplo de Push(para adicionar no array:)
