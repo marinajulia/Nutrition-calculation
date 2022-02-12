@@ -15,10 +15,7 @@ for (var i = 0; pacientes.length; i++) {
     var imc = calculaImc(peso, altura)
     var tdImc = paciente.querySelector(".info-imc");
     tdImc.textContent = imc;
-
-    if (imc > 25) {
-        paciente.classList.add("paciente-invalido");
-    }
+    ValidaImc(imc)
 }
 
 function calculaImc(peso, altura) {
@@ -27,3 +24,9 @@ function calculaImc(peso, altura) {
     return imc.toFixed(2);
 }
 
+function ValidaImc(imc) {
+    if (imc > 25 || imc <= 0) {
+        return false;
+    }
+    return true;
+}

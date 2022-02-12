@@ -1,9 +1,15 @@
 botao.addEventListener("click", function () {
     event.preventDefault();
+
     var form = document.querySelector("#form-adicionar");
     var paciente = obtemPacienteDoFormulario(form);
     var pacienteTr = montaTr(paciente);
 
+    if(!validaPaciente(paciente)){
+        var mensagemErro = document.querySelector("#mensagem-erro");
+        mensagemErro.textContent = "IMC inválido"
+        return;
+    }
     var tabela = document.querySelector("#tabela-pacientes");
     tabela.appendChild(pacienteTr);
     form.reset();
@@ -37,4 +43,11 @@ function montaTd(dado, classe){
     td.textContent = dado;
     td.classList.add(classe);
     return td;
+}
+
+function validaPaciente(paciente){
+    if(ValidaImc(paciente.imc)){
+        return true
+    }
+    return false;
 }
