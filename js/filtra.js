@@ -8,6 +8,9 @@ campoFiltro.addEventListener("input", function () {
             paciente = pacientes[i];
             var tdNome = paciente.querySelector(".info-nome");
             var nome = tdNome.textContent;
+            var expressao = new RegExp(this.value, "i"); //i para aceitar letras maiúculas e minusculas na busca
+            
+            if(!expressao.test(nome))
             if (nome != this.value) {
                 paciente.classList.add("invisivel");
             } else {
