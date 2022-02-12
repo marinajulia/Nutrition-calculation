@@ -51,3 +51,8 @@ function validaPaciente(paciente){
     }
     return false;
 }
+
+// exemplo de Push(para adicionar no array:)
+// var erros = [];
+// if("" === "") erros.push("erro");
+// if("" === "") erros.push("mais um erro para adicionar no array");
